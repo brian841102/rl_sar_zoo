@@ -1,0 +1,221 @@
+<mujoco model="legged_yscgo">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+
+  <default>
+    <default class="yscgo">
+      <geom type="mesh"/>
+      <joint damping="1" armature="0.1"/>
+      <default class="visual">
+        <geom contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom group="3" mass="0" density="0"/>
+      </default>
+      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
+    </default>
+  </default>
+
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="FR_hip_link" file="RF-hip-link.STL"/>
+    <mesh name="FR_thigh_link" file="RF-thigh-link.STL"/>
+    <mesh name="FR_calf_link" file="RF-calf-link.STL"/>
+    <mesh name="FL_hip_link" file="LF-hip-link.STL"/>
+    <mesh name="FL_thigh_link" file="LF-thigh-link.STL"/>
+    <mesh name="FL_calf_link" file="LF-calf-link.STL"/>
+    <mesh name="RR_hip_link" file="RB-hip-link.STL"/>
+    <mesh name="RR_thigh_link" file="RB-thigh-link.STL"/>
+    <mesh name="RR_calf_link" file="RB-calf-link.STL"/>
+    <mesh name="RL_hip_link" file="LB-hip-link.STL"/>
+    <mesh name="RL_thigh_link" file="LB-thigh-link.STL"/>
+    <mesh name="RL_calf_link" file="LB-calf-link.STL"/>
+  </asset>
+
+  <worldbody>
+    <body name="base" pos="0 0 0.8" childclass="yscgo">
+      <inertial pos="0.002148 -0.000388 -0.103293" mass="159.277" fullinertia="6.637751 24.08774 28.83469 -0.01443162 0.003251106 -0.002196445"/>
+      <joint name="floating_base_joint" type="free"/>
+      
+      <geom type="mesh" mesh="base_link" class="visual" rgba="0.54901960784 0.04705882353 0.0431372549 1"/>
+      <geom type="mesh" mesh="base_link" class="collision"/>
+      
+      <site name="imu" pos="0 0 0"/>
+
+      <body name="FR_hip" pos="0.641 -0.309 -0.097">
+        <inertial pos="-0.170224 0.000828 -0.087717" mass="12.360" fullinertia="0.03765034 0.2272831 0.2112761 -0.001578884 0.01147413 -0.000346967"/>
+        <joint name="FR_hip_joint" axis="1 0 0" range="-0.349 0.349"/>
+        <geom type="mesh" mesh="FR_hip_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+        
+        <body name="FR_thigh" pos="0 0 -0.1065">
+          <inertial pos="0.01379 0.000024 -0.3409" mass="11.479" fullinertia="0.3640088 0.366903 0.03063003 -0.000009152 -0.0134279 0.000023857"/>
+          <joint name="FR_thigh_joint" axis="0 1 0" range="-1.04719755 1.22173047"/>
+          <geom type="mesh" mesh="FR_thigh_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+          <geom type="box" size="0.25 0.02 0.02" pos="0 0 -0.27" euler="0 1.57079632 0" class="collision"/>
+          
+          <body name="FR_calf" pos="0 0 -0.55">
+            <inertial pos="-0.04685 -0.000003 -0.2845" mass="4.915" fullinertia="0.175327 0.1747803 0.01075076 -0.000000076 -0.01221075 0.000004301"/>
+            <joint name="FR_calf_joint" axis="0 1 0" range="-2.7925268 -0.01745329"/>
+            <geom type="mesh" mesh="FR_calf_link" class="visual" rgba="0.54901960784 0.04705882353 0.0431372549 1"/>
+            <geom type="box" size="0.25 0.0175 0.0225" pos="0 0 -0.25" euler="0 1.57079632 0" class="collision"/>
+            
+            <body name="FR_foot" pos="-0.08 0 -0.4936">
+              <inertial pos="0 0 0" mass="0.0450952" fullinertia="3.2581282e-05 3.2581282e-05 3.2581282e-05 0 0 0"/>
+              <geom type="sphere" size="0.0425" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+              <geom type="sphere" size="0.0425" group="1" rgba="0.949 0.753 0.337 1"/>
+              <site name="FR_foot_touch" pos="0 0 0"/>
+            </body>
+          </body>
+        </body>
+      </body>
+
+      <body name="FL_hip" pos="0.641 0.309 -0.097">
+        <inertial pos="-0.1702 -0.000782 -0.08772" mass="12.360" fullinertia="0.03765126 0.2272831 0.211277 0.001607696 0.01147413 0.00033408"/>
+        <joint name="FL_hip_joint" axis="1 0 0" range="-0.349 0.349"/>
+        <geom type="mesh" mesh="FL_hip_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+        
+        <body name="FL_thigh" pos="0 0 -0.1065">
+          <inertial pos="0.01379 0.000024 -0.3409" mass="11.479" fullinertia="0.3640088 0.366903 0.03063003 -0.000009152 -0.0134279 0.000023857"/>
+          <joint name="FL_thigh_joint" axis="0 1 0" range="-1.04719755 1.22173047"/>
+          <geom type="mesh" mesh="FL_thigh_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+          <geom type="box" size="0.25 0.02 0.02" pos="0 0 -0.27" euler="0 1.57079632 0" class="collision"/>
+          
+          <body name="FL_calf" pos="0 0 -0.55">
+            <inertial pos="-0.04685 -0.000003 -0.2845" mass="4.915" fullinertia="0.175327 0.1747803 0.01075076 -0.000000076 -0.01221075 0.000004301"/>
+            <joint name="FL_calf_joint" axis="0 1 0" range="-2.7925268 -0.01745329"/>
+            <geom type="mesh" mesh="FL_calf_link" class="visual" rgba="0.54901960784 0.04705882353 0.0431372549 1"/>
+            <geom type="box" size="0.25 0.0175 0.0225" pos="0 0 -0.25" euler="0 1.57079632 0" class="collision"/>
+            
+            <body name="FL_foot" pos="-0.08 0 -0.4936">
+              <inertial pos="0 0 0" mass="0.0450952" fullinertia="3.2581282e-05 3.2581282e-05 3.2581282e-05 0 0 0"/>
+              <geom type="sphere" size="0.0425" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+              <geom type="sphere" size="0.0425" group="1" rgba="0.949 0.753 0.337 1"/>
+              <site name="FL_foot_touch" pos="0 0 0"/>
+            </body>
+          </body>
+        </body>
+      </body>
+
+      <body name="RR_hip" pos="-0.641 -0.309 -0.097">
+        <inertial pos="0.1708 0.000691 -0.09055" mass="12.300" fullinertia="0.04096694 0.2306614 0.2112255 0.001424226 -0.013273 -0.000308894"/>
+        <joint name="RR_hip_joint" axis="1 0 0" range="-0.349 0.349"/>
+        <geom type="mesh" mesh="RR_hip_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+        
+        <body name="RR_thigh" pos="0 0 -0.1065">
+          <inertial pos="-0.005588 0.000032 -0.3437" mass="11.048" fullinertia="0.3509072 0.3538119 0.02872637 -0.000007429 0.02101851 -0.000001778"/>
+          <joint name="RR_thigh_joint" axis="0 1 0" range="-1.04719755 1.22173047"/>
+          <geom type="mesh" mesh="RR_thigh_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+          <geom type="box" size="0.25 0.02 0.02" pos="0 0 -0.27" euler="0 1.57079632 0" class="collision"/>
+          
+          <body name="RR_calf" pos="0 0 -0.55">
+            <inertial pos="-0.04685 -0.000003 -0.2845" mass="4.915" fullinertia="0.175327 0.1747803 0.01075076 -0.000000076 -0.01221075 0.000004301"/>
+            <joint name="RR_calf_joint" axis="0 1 0" range="-2.7925268 -0.01745329"/>
+            <geom type="mesh" mesh="RR_calf_link" class="visual" rgba="0.54901960784 0.04705882353 0.0431372549 1"/>
+            <geom type="box" size="0.25 0.0175 0.0225" pos="0 0 -0.25" euler="0 1.57079632 0" class="collision"/>
+            
+            <body name="RR_foot" pos="-0.08 0 -0.4936">
+              <inertial pos="0 0 0" mass="0.0450952" fullinertia="3.2581282e-05 3.2581282e-05 3.2581282e-05 0 0 0"/>
+              <geom type="sphere" size="0.0425" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+              <geom type="sphere" size="0.0425" group="1" rgba="0.949 0.753 0.337 1"/>
+              <site name="RR_foot_touch" pos="0 0 0"/>
+            </body>
+          </body>
+        </body>
+      </body>
+
+      <body name="RL_hip" pos="-0.641 0.309 -0.097">
+        <inertial pos="0.1705 -0.000789 -0.09047" mass="12.322" fullinertia="0.04107107 0.2312771 0.2118615 -0.001620314 -0.01312072 0.000386643"/>
+        <joint name="RL_hip_joint" axis="1 0 0" range="-0.349 0.349"/>
+        <geom type="mesh" mesh="RL_hip_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+        
+        <body name="RL_thigh" pos="0 0 -0.1065">
+          <inertial pos="-0.005588 0.000032 -0.3437" mass="11.048" fullinertia="0.3509072 0.3538119 0.02838134 -0.000007429 0.02101851 -0.000001778"/>
+          <joint name="RL_thigh_joint" axis="0 1 0" range="-1.04719755 1.22173047"/>
+          <geom type="mesh" mesh="RL_thigh_link" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+          <geom type="box" size="0.25 0.02 0.02" pos="0 0 -0.27" euler="0 1.57079632 0" class="collision"/>
+          
+          <body name="RL_calf" pos="0 0 -0.55">
+            <inertial pos="-0.04685 -0.000003 -0.2845" mass="4.915" fullinertia="0.175327 0.1747803 0.01075076 -0.000000076 -0.01221075 0.000004301"/>
+            <joint name="RL_calf_joint" axis="0 1 0" range="-2.7925268 -0.01745329"/>
+            <geom type="mesh" mesh="RL_calf_link" class="visual" rgba="0.54901960784 0.04705882353 0.0431372549 1"/>
+            <geom type="box" size="0.25 0.0175 0.0225" pos="0 0 -0.25" euler="0 1.57079632 0" class="collision"/>
+            
+            <body name="RL_foot" pos="-0.08 0 -0.4936">
+              <inertial pos="0 0 0" mass="0.0450952" fullinertia="3.2581282e-05 3.2581282e-05 3.2581282e-05 0 0 0"/>
+              <geom type="sphere" size="0.0425" class="visual" rgba="0.949019 0.752941 0.337255 1"/>
+              <geom type="sphere" size="0.0425" group="1" rgba="0.949 0.753 0.337 1"/>
+              <site name="RL_foot_touch" pos="0 0 0"/>
+            </body>
+          </body>
+        </body>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor class="yscgo" ctrlrange="-200 200" name="FR_hip" joint="FR_hip_joint"/>
+    <motor class="yscgo" ctrlrange="-350 350" name="FR_thigh" joint="FR_thigh_joint"/>
+    <motor class="yscgo" ctrlrange="-600 600" name="FR_calf" joint="FR_calf_joint"/>
+    
+    <motor class="yscgo" ctrlrange="-200 200" name="FL_hip" joint="FL_hip_joint"/>
+    <motor class="yscgo" ctrlrange="-350 350" name="FL_thigh" joint="FL_thigh_joint"/>
+    <motor class="yscgo" ctrlrange="-600 600" name="FL_calf" joint="FL_calf_joint"/>
+    
+    <motor class="yscgo" ctrlrange="-200 200" name="RR_hip" joint="RR_hip_joint"/>
+    <motor class="yscgo" ctrlrange="-450 450" name="RR_thigh" joint="RR_thigh_joint"/>
+    <motor class="yscgo" ctrlrange="-570 570" name="RR_calf" joint="RR_calf_joint"/>
+    
+    <motor class="yscgo" ctrlrange="-200 200" name="RL_hip" joint="RL_hip_joint"/>
+    <motor class="yscgo" ctrlrange="-450 450" name="RL_thigh" joint="RL_thigh_joint"/>
+    <motor class="yscgo" ctrlrange="-570 570" name="RL_calf" joint="RL_calf_joint"/>
+  </actuator>
+
+  <sensor>
+    <jointpos name="FR_hip_pos" joint="FR_hip_joint" />
+    <jointpos name="FR_thigh_pos" joint="FR_thigh_joint" />
+    <jointpos name="FR_calf_pos" joint="FR_calf_joint" />
+    <jointpos name="FL_hip_pos" joint="FL_hip_joint" />
+    <jointpos name="FL_thigh_pos" joint="FL_thigh_joint" />
+    <jointpos name="FL_calf_pos" joint="FL_calf_joint" />
+    <jointpos name="RR_hip_pos" joint="RR_hip_joint" />
+    <jointpos name="RR_thigh_pos" joint="RR_thigh_joint" />
+    <jointpos name="RR_calf_pos" joint="RR_calf_joint" />
+    <jointpos name="RL_hip_pos" joint="RL_hip_joint" />
+    <jointpos name="RL_thigh_pos" joint="RL_thigh_joint" />
+    <jointpos name="RL_calf_pos" joint="RL_calf_joint" />
+
+    <jointvel name="FR_hip_vel" joint="FR_hip_joint" />
+    <jointvel name="FR_thigh_vel" joint="FR_thigh_joint" />
+    <jointvel name="FR_calf_vel" joint="FR_calf_joint" />
+    <jointvel name="FL_hip_vel" joint="FL_hip_joint" />
+    <jointvel name="FL_thigh_vel" joint="FL_thigh_joint" />
+    <jointvel name="FL_calf_vel" joint="FL_calf_joint" />
+    <jointvel name="RR_hip_vel" joint="RR_hip_joint" />
+    <jointvel name="RR_thigh_vel" joint="RR_thigh_joint" />
+    <jointvel name="RR_calf_vel" joint="RR_calf_joint" />
+    <jointvel name="RL_hip_vel" joint="RL_hip_joint" />
+    <jointvel name="RL_thigh_vel" joint="RL_thigh_joint" />
+    <jointvel name="RL_calf_vel" joint="RL_calf_joint" />
+
+    <jointactuatorfrc name="FR_hip_torque" joint="FR_hip_joint" noise="0.01" />
+    <jointactuatorfrc name="FR_thigh_torque" joint="FR_thigh_joint" noise="0.01" />
+    <jointactuatorfrc name="FR_calf_torque" joint="FR_calf_joint" noise="0.01" />
+    <jointactuatorfrc name="FL_hip_torque" joint="FL_hip_joint" noise="0.01" />
+    <jointactuatorfrc name="FL_thigh_torque" joint="FL_thigh_joint" noise="0.01" />
+    <jointactuatorfrc name="FL_calf_torque" joint="FL_calf_joint" noise="0.01" />
+    <jointactuatorfrc name="RR_hip_torque" joint="RR_hip_joint" noise="0.01" />
+    <jointactuatorfrc name="RR_thigh_torque" joint="RR_thigh_joint" noise="0.01" />
+    <jointactuatorfrc name="RR_calf_torque" joint="RR_calf_joint" noise="0.01" />
+    <jointactuatorfrc name="RL_hip_torque" joint="RL_hip_joint" noise="0.01" />
+    <jointactuatorfrc name="RL_thigh_torque" joint="RL_thigh_joint" noise="0.01" />
+    <jointactuatorfrc name="RL_calf_torque" joint="RL_calf_joint" noise="0.01" />
+
+    <framequat name="imu_quat" objtype="site" objname="imu" />
+    <gyro name="imu_gyro" site="imu" />
+    <accelerometer name="imu_acc" site="imu" />
+    
+    <framepos name="frame_pos" objtype="site" objname="imu" />
+    <framelinvel name="frame_vel" objtype="site" objname="imu" />
+  </sensor>
+
+</mujoco>
