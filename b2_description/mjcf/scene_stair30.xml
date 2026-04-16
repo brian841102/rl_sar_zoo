@@ -1,0 +1,95 @@
+<mujoco model="b2 scene">
+  <include file="b2.xml" />
+
+  <statistic center="0 0 0.1" extent="0.8" />
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />
+    <rgba haze="0.15 0.25 0.35 1" />
+    <global azimuth="-130" elevation="-20" />
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true" />
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane" />
+
+    <geom type="box" pos="1.15 0 0.05" size="0.15 1.5 0.05" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.45 0 0.10" size="0.15 1.5 0.10" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.75 0 0.15" size="0.15 1.5 0.15" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.05 0 0.20" size="0.15 1.5 0.20" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.35 0 0.25" size="0.15 1.5 0.25" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.65 0 0.30" size="0.15 1.5 0.30" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.95 0 0.35" size="0.15 1.5 0.35" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.25 0 0.40" size="0.15 1.5 0.40" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.55 0 0.45" size="0.15 1.5 0.45" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.85 0 0.50" size="0.15 1.5 0.50" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="5.00 0 0.50" size="1.00 1.5 0.50" rgba="0.4 0.8 0.4 1" friction="1.2 0.01 0.005"/>
+
+    <geom type="box" pos="1.15 -3.5 0.06" size="0.15 1.5 0.06" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.45 -3.5 0.12" size="0.15 1.5 0.12" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.75 -3.5 0.18" size="0.15 1.5 0.18" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.05 -3.5 0.24" size="0.15 1.5 0.24" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.35 -3.5 0.30" size="0.15 1.5 0.30" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.65 -3.5 0.36" size="0.15 1.5 0.36" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.95 -3.5 0.42" size="0.15 1.5 0.42" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.25 -3.5 0.48" size="0.15 1.5 0.48" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.55 -3.5 0.54" size="0.15 1.5 0.54" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.85 -3.5 0.60" size="0.15 1.5 0.60" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="5.00 -3.5 0.60" size="1.00 1.5 0.60" rgba="0.6 0.8 0.3 1" friction="1.2 0.01 0.005"/>
+
+    <geom type="box" pos="1.15 -7.0 0.07" size="0.15 1.5 0.07" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.45 -7.0 0.14" size="0.15 1.5 0.14" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.75 -7.0 0.21" size="0.15 1.5 0.21" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.05 -7.0 0.28" size="0.15 1.5 0.28" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.35 -7.0 0.35" size="0.15 1.5 0.35" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.65 -7.0 0.42" size="0.15 1.5 0.42" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.95 -7.0 0.49" size="0.15 1.5 0.49" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.25 -7.0 0.56" size="0.15 1.5 0.56" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.55 -7.0 0.63" size="0.15 1.5 0.63" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.85 -7.0 0.70" size="0.15 1.5 0.70" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="5.00 -7.0 0.70" size="1.00 1.5 0.70" rgba="0.8 0.8 0.2 1" friction="1.2 0.01 0.005"/>
+
+    <geom type="box" pos="1.15 -10.5 0.08" size="0.15 1.5 0.08" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.45 -10.5 0.16" size="0.15 1.5 0.16" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.75 -10.5 0.24" size="0.15 1.5 0.24" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.05 -10.5 0.32" size="0.15 1.5 0.32" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.35 -10.5 0.40" size="0.15 1.5 0.40" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.65 -10.5 0.48" size="0.15 1.5 0.48" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.95 -10.5 0.56" size="0.15 1.5 0.56" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.25 -10.5 0.64" size="0.15 1.5 0.64" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.55 -10.5 0.72" size="0.15 1.5 0.72" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.85 -10.5 0.80" size="0.15 1.5 0.80" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="5.00 -10.5 0.80" size="1.00 1.5 0.80" rgba="0.9 0.6 0.2 1" friction="1.2 0.01 0.005"/>
+
+    <geom type="box" pos="1.15 -14.0 0.09" size="0.15 1.5 0.09" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.45 -14.0 0.18" size="0.15 1.5 0.18" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.75 -14.0 0.27" size="0.15 1.5 0.27" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.05 -14.0 0.36" size="0.15 1.5 0.36" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.35 -14.0 0.45" size="0.15 1.5 0.45" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.65 -14.0 0.54" size="0.15 1.5 0.54" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.95 -14.0 0.63" size="0.15 1.5 0.63" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.25 -14.0 0.72" size="0.15 1.5 0.72" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.55 -14.0 0.81" size="0.15 1.5 0.81" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.85 -14.0 0.90" size="0.15 1.5 0.90" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="5.00 -14.0 0.90" size="1.00 1.5 0.90" rgba="0.9 0.4 0.2 1" friction="1.2 0.01 0.005"/>
+
+    <geom type="box" pos="1.15 -17.5 0.10" size="0.15 1.5 0.10" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.45 -17.5 0.20" size="0.15 1.5 0.20" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="1.75 -17.5 0.30" size="0.15 1.5 0.30" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.05 -17.5 0.40" size="0.15 1.5 0.40" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.35 -17.5 0.50" size="0.15 1.5 0.50" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.65 -17.5 0.60" size="0.15 1.5 0.60" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="2.95 -17.5 0.70" size="0.15 1.5 0.70" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.25 -17.5 0.80" size="0.15 1.5 0.80" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.55 -17.5 0.90" size="0.15 1.5 0.90" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="3.85 -17.5 1.00" size="0.15 1.5 1.00" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+    <geom type="box" pos="5.00 -17.5 1.00" size="1.00 1.5 1.00" rgba="0.9 0.2 0.2 1" friction="1.2 0.01 0.005"/>
+
+  </worldbody>
+</mujoco>
